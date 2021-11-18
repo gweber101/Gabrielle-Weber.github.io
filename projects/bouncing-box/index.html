@@ -14,7 +14,7 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 300px;  /* <--- Change me! */
+			left: 200px;  /* <--- Change me! */
 		}
 		.board{
 			height: 100vh;
@@ -71,8 +71,10 @@
 			turn it around! 
 			*/
 			function update() {
-				moveBoxTo(200);
-				moveBoxTo(boardWidth);
+				var positionX = positionX + 10;
+				moveBoxTo(positionX);
+				var positionX = 0;
+				var points = 0;
 			};
 
 			/* 
@@ -82,7 +84,9 @@
 			*/
 			function handleBoxClick() {
 				positionX = 0;
-                changeBoxText(1);
+				points = points + 1;
+				points = points + 1;
+                changeBoxText(points);
 			};
 		})();
 	</script>
