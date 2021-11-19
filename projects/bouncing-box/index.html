@@ -5,6 +5,10 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		body {
+			background-image: url("");
+			background-color: aqua;
+		}
 		.box {
 			width: 70px;
 			height: 70px;
@@ -22,14 +26,14 @@
 			height: 100vh;
 			background-color: pink;
 		}
+		
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
 <body class="board">
 	<!-- HTML for the box -->
-	<div class="box">?</div>
-
+	<div class="box">?</div> 
 	<script>
 		(function(){
 			'use strict'
@@ -52,6 +56,7 @@
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX) {
 				box.css("left", newPositionX);
+				box.css('top', newPositionY);
 				newPositionX(100);
 			}
 
@@ -70,6 +75,9 @@
 			var positionX = 0;
 			var points = 0;
             var speed = 10;
+			var positionY;
+			var speedY;
+			var boardHeight = jQuery(window).height(); 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -83,7 +91,7 @@
 				if (positionX < 0) {
 					speed += 1;
 				}
-				moveBoxTo(positionX);
+				moveBoxTo(positionX, positionY);
 			};
 
 			/* 
