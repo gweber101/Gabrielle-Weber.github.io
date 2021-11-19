@@ -8,7 +8,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(13, 172, 172);
 		    color: red;
 			border-radius: 60%;
 			font-size: 300%;
@@ -81,7 +81,7 @@
 					speed *= -1;
 				}
 				if (positionX < 0) {
-					positionX += speed;
+					speed += 1;
 				}
 				moveBoxTo(positionX);
 			};
@@ -94,12 +94,13 @@
 			function handleBoxClick() {
 				positionX = 0;
 				points = points + 1;
-				changeBoxText(points);
-				if (speed === postive) {
+				changeBoxText(points); 
+				speed += 3;
+				if (speed === positive) {
 					speed += 3;
-			}else {
-              speed -= 3;
-			}
+				}else {
+					speed -= 3;
+				}
 		}
 		})();
 	</script>
