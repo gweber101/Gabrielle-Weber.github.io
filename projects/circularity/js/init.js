@@ -74,15 +74,15 @@ var init = function (window) {
             
             // TODO 7 : YOUR CODE STARTS HERE //////////////////////
 
-            // if the cirlce has gone past the LEFT side of the screen then place it on the RIGHT
-            if (circle.y > canvas.height) {
-                circle.y = 0;
+            // if the cirlce has gone past the TOP of the screen then place it on the BOTTOM
+            if (circle.y < 0) {
+                circle.y = canvas.height;
             }
-            // if the circle has gone past the height bring it back to the center
-            if (circle.x > canvas.width) {
+            // if the circle has gone past the Left side of the screen place it back to the RIGHT side 
+            if (circle.x < 0) {
                 circle.x = canvas.width;
             }
-            //if the circle has gone past the height bring it back to the center
+            //if the circle has gone past the BOTTOM of the sreen place it back to the TOP
             if (circle.y > canvas.height) {
                 circle.y = 0;
             }
