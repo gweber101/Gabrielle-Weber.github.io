@@ -5,16 +5,16 @@ var init = function (window) {
         physikz = window.opspark.racket.physikz,
         
         app = window.opspark.makeApp(),
-        canvas = app.canvas, 
+        canvas = app.canvas,
         view = app.view,
         fps = draw.fps('#000');
+       
         
     
     window.opspark.makeGame = function() {
         
         window.opspark.game = {};
         var game = window.opspark.game;
-        
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM SETUP ////////////////////////////
         ////////////////////////////////////////////////////////////
@@ -86,6 +86,8 @@ var init = function (window) {
             if (circle.y > canvas.height) {
                 circle.y = 0;
             }
+            circle.x + circle.radius;
+            circle.y + circle.radius;
             
             // YOUR TODO 7 CODE ENDS HERE //////////////////////////
         }
