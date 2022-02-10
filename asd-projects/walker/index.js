@@ -27,7 +27,7 @@ function runProgram(){
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-
+  $(document).on ("keyup", handleKeyUp);// created for todo 6
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -37,8 +37,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem(); 
-    redrawGameItem();
+  var repo =  repositionGameItem(); // added the helper function to this function
+   var redraw = redrawGameItem(); // added the helper function to this function
   }
   
   /* 
