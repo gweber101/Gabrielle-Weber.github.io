@@ -16,6 +16,10 @@ function runProgram(){
     "UP": 38,
     "DOWN": 40,
   };
+  var positionX = 0;
+  var speedX = 0;
+  var positionY = 0;
+  var speedY = 0;
   
   // Game Item Objects
 
@@ -33,8 +37,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
-
+    repositionGameItem(); 
+    redrawGameItem();
   }
   
   /* 
@@ -64,6 +68,17 @@ function runProgram(){
 
     // turn off event handlers
     $(document).off();
-  }
+  }// end of first helper function
+
+  repositionGameItem() {
+    positionX += speedX;
+    positionY += speedY;
+  }// second helper function
+    
   
+  redrawGameItem() {
+     $("#walker").css("top", positionX);
+     $("#walker").css("top", positionY);
+  }// third helper fuction
+
 }
