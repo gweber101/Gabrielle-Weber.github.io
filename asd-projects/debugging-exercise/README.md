@@ -1,7 +1,7 @@
 # Debugging Exercise
 Practice using the Chrome debugger to find errors in the code. The code you will be working with uses techniques you might not be familiar with, but that's okay! You can still track down erros by using the debugger, and get the whole thing working!
 
-**Table of Contents**
+**Table of Contents*
 - [Overview](#Overview)
   - [Learning Objectives](#learning-objectives)
   - [Project Grading](#project-grading)
