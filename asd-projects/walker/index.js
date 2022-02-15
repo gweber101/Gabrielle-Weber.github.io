@@ -40,6 +40,7 @@ function runProgram(){
   function newFrame() {
      repositionGameItem(); // added the helper function to this function
      redrawGameItem(positionX, positionY); // added the helper function to this function
+     stopWalker();
   }
   
   /* 
@@ -101,18 +102,18 @@ function runProgram(){
   function redrawGameItem(positionX, positionY) {
      $("#walker").css("left", positionX);
      $("#walker").css("top", positionY);
-     $("#walker").css("top", boardheight);
-     $("#walker").css("left", boardwidth); // added in boardwidth and height
+     $("#walker").css("top", positionY);
+     $("#walker").css("left", positionX); // added in boardwidth and height
   } // third helper fuction
   
-  function boardwidth() {
+  function stopWalker() {
     if (positionX > boardWidth) {
       positionX = boardWidth;
-  }if  (positionX < boardWidth) {
+  }if  (positionX < 0) {
     positionX = 0;
   }if (positionY > boardHeight){
     positionY  = boardHeight;
-  } if (positionY < boardHeight) {
+  }if (positionY < 0) {
     positionY = 0;
   }
   }
