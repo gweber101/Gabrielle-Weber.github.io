@@ -109,11 +109,11 @@ function runProgram(){
   function stopWalker() {
     if (positionX > boardWidth) {
       positionX = boardWidth;
-  }if  (positionX < 0) {
+  }else if  (positionX < 0) {
     positionX = 0;
   }if (positionY > boardHeight){
     positionY  = boardHeight;
-  }if (positionY < 0) {
+  }else if (positionY < 0) {
     positionY = 0;
   }
   }
