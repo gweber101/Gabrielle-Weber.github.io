@@ -6,7 +6,7 @@ body {
 #board {
   width: 440px;
   height: 440px;
-  border: 5px solid red;
+  border: 1px solid red;
   background-color: black;
   position: relative;
 }

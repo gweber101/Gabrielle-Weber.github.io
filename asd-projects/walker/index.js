@@ -47,43 +47,36 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
-      (positionX > boardWidth)
-      positionX = -5;
+      speedX = -5;
       console.log("LEFT PRESSED");
     }else if (event.which === KEY.RIGHT) {
-      (positionX < boardWidth)
-      positionX = 390;
+      speedX = 5;
       console.log("RIGHT PRESSED");
     }else if (event.which === KEY.UP) {
-      (positionY > boardHeight)
-      positionY = -5;
+      speedY = -5;
       console.log("UP PRESSED");
     }else if (event.which === KEY.DOWN) {
-      (positionY < boardHeight)
-      positionY = 390;
+      speedY = 5;
       console.log("DOWN PRESSED");
     }
        
   }
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
-      (positionX > boardWidth)
-      positionX = 0;
+      speedX = 0;
       console.log("LEFT RELEASED");
     }else if (event.which === KEY.RIGHT) {
-      (positionX < boardWidth)
-      positionX = 0;
+      speedX = 0;
       console.log("RIGHT RELEASED");
     }else if (event.which === KEY.UP) {
-      (positionY > boardHeight)
-      positionY = 0;
+      speedY = 0;
             console.log("UP RELEASED");
     }else if (event.which === KEY.DOWN) {
-      (positionY < boardHeight)
-      positionY = 0;
+      speedY = 0;
             console.log("DOWN RELEASED");
     }
-  }
+  }  
+  
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -100,27 +93,28 @@ function runProgram(){
 
   function repositionGameItem() {
     positionX += speedX;
-    //if (positionX > boardWidth) { // added in if statements
-     // speedX = 0;
-   // }
-    //if (positionX < boardWidth) {
-    //  speedX = 0;
-   // }
     positionY += speedY;
-    //if (positionY > boardHeight) {
-     // speedY = 0;
-   // }
-    //if (positionY < boardHeight) {
-     // speedY = 0;
-   // }
+    
   } // second helper function
     
   
   function redrawGameItem(positionX, positionY) {
      $("#walker").css("left", positionX);
      $("#walker").css("top", positionY);
-     $("#walker").css("left", boardheight);
-     $("#walker").css("top", boardwidth); // added in boardwidth and height
+     $("#walker").css("top", boardheight);
+     $("#walker").css("left", boardwidth); // added in boardwidth and height
   } // third helper fuction
+  
+  function boardwidth() {
+    if (positionX > boardWidth) {
+      positionX = boardWidth;
+  }if  (positionX < boardWidth) {
+    positionX = 0;
+  }if (positionY > boardHeight){
+    positionY  = boardHeight;
+  } if (positionY < boardHeight) {
+    positionY = 0;
+  }
+  }
 
 }
