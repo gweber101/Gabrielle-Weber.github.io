@@ -21,10 +21,10 @@ function runProgram(){
   var speedX = 0;
   var positionY = 0;
   var speedY = 0;
-  
-  
 
 
+
+  
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
