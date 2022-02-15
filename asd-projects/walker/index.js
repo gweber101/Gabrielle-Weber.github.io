@@ -20,8 +20,9 @@ function runProgram(){
   var positionX = 0;
   var speedX = 0;
   var positionY = 0;
-  var speedY = 0;
-
+  var speedY = 0; // changed speeds to 10
+  var boardWidth = $("#board").width() - $("#walker").width();
+  var boardHeight = $("#board").height() - $("#walker").height();
 
 
   
@@ -47,17 +48,21 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
+      (positionX > boardWidth)
       speedX = -5;
       console.log("LEFT PRESSED");
     }else if (event.which === KEY.RIGHT) {
+      (positionX < boardWidth)
       speedX = 5;
       console.log("RIGHT PRESSED");
     }else if (event.which === KEY.UP) {
+      (positionY > boardHeight)
       speedY = -5;
-            console.log("UP PRESSED");
+      console.log("UP PRESSED");
     }else if (event.which === KEY.DOWN) {
+      (positionY < boardHeight)
       speedY = 5;
-            console.log("DOWN PRESSED");
+      console.log("DOWN PRESSED");
     }
        
   }
@@ -92,13 +97,27 @@ function runProgram(){
 
   function repositionGameItem() {
     positionX += speedX;
+    //if (positionX > boardWidth) { // added in if statements
+     // speedX = 0;
+   // }
+    //if (positionX < boardWidth) {
+    //  speedX = 0;
+   // }
     positionY += speedY;
+    //if (positionY > boardHeight) {
+     // speedY = 0;
+   // }
+    //if (positionY < boardHeight) {
+     // speedY = 0;
+   // }
   } // second helper function
     
   
   function redrawGameItem(positionX, positionY) {
      $("#walker").css("left", positionX);
      $("#walker").css("top", positionY);
+     $("#walker").css("left", boardWidth);
+     $("#walker").css("top", boardHeight); // added in boardwidth and height
   } // third helper fuction
 
 }
