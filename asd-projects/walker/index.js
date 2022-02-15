@@ -16,12 +16,13 @@ function runProgram(){
     "UP": 38,
     "DOWN": 40,
   };
+
   var positionX = 0;
   var speedX = 0;
   var positionY = 0;
   var speedY = 0;
   
-  // Game Item Objects
+  
 
 
   // one-time setup
@@ -70,15 +71,15 @@ function runProgram(){
     $(document).off();
   }// end of first helper function
 
-  repositionGameItem() {
+  repositionGameItem () {
     positionX += speedX;
     positionY += speedY;
-  }// second helper function
+  } // second helper function
     
   
-  redrawGameItem() {
-     $("#walker").css("top", positionX);
+  redrawGameItem (positionX, positionY) {
+     $("#walker").css("left", positionX);
      $("#walker").css("top", positionY);
-  }// third helper fuction
+  } // third helper fuction
 
 }
