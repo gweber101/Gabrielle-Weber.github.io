@@ -71,13 +71,13 @@ function runProgram(){
     $(document).off();
   }// end of first helper function
 
-  repositionGameItem () {
+  function repositionGameItem() {
     positionX += speedX;
     positionY += speedY;
   } // second helper function
     
   
-  redrawGameItem (positionX, positionY) {
+  function redrawGameItem(positionX, positionY) {
      $("#walker").css("left", positionX);
      $("#walker").css("top", positionY);
   } // third helper fuction
