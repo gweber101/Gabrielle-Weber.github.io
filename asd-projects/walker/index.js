@@ -24,7 +24,6 @@ function runProgram(){
   var boardWidth = $("#board").width() - $("#walker").width();
   var boardHeight = $("#board").height() - $("#walker").height();
 
-
   
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -49,35 +48,39 @@ function runProgram(){
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
       (positionX > boardWidth)
-      speedX = -5;
+      positionX = -5;
       console.log("LEFT PRESSED");
     }else if (event.which === KEY.RIGHT) {
       (positionX < boardWidth)
-      speedX = 5;
+      positionX = 390;
       console.log("RIGHT PRESSED");
     }else if (event.which === KEY.UP) {
       (positionY > boardHeight)
-      speedY = -5;
+      positionY = -5;
       console.log("UP PRESSED");
     }else if (event.which === KEY.DOWN) {
       (positionY < boardHeight)
-      speedY = 5;
+      positionY = 390;
       console.log("DOWN PRESSED");
     }
        
   }
   function handleKeyUp(event) {
     if (event.which === KEY.LEFT) {
-      speedX = 0;
+      (positionX > boardWidth)
+      positionX = 0;
       console.log("LEFT RELEASED");
     }else if (event.which === KEY.RIGHT) {
-      speedX = 0;
+      (positionX < boardWidth)
+      positionX = 0;
       console.log("RIGHT RELEASED");
     }else if (event.which === KEY.UP) {
-      speedY = 0;
+      (positionY > boardHeight)
+      positionY = 0;
             console.log("UP RELEASED");
     }else if (event.which === KEY.DOWN) {
-      speedY = 0;
+      (positionY < boardHeight)
+      positionY = 0;
             console.log("DOWN RELEASED");
     }
   }
@@ -116,8 +119,8 @@ function runProgram(){
   function redrawGameItem(positionX, positionY) {
      $("#walker").css("left", positionX);
      $("#walker").css("top", positionY);
-     $("#walker").css("left", boardWidth);
-     $("#walker").css("top", boardHeight); // added in boardwidth and height
+     $("#walker").css("left", boardheight);
+     $("#walker").css("top", boardwidth); // added in boardwidth and height
   } // third helper fuction
 
 }
