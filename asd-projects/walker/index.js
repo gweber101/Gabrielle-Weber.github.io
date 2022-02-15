@@ -28,7 +28,7 @@ function runProgram(){
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-  $(document).on ("keyup", handleKeyUp);// created for todo 6
+  $(document).on ("keyup", handleKeyUp); // created for todo 6
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -38,8 +38,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-  var repo =  repositionGameItem(); // added the helper function to this function
-   var redraw = redrawGameItem(); // added the helper function to this function
+     repositionGameItem(); // added the helper function to this function
+     redrawGameItem(positionX, positionY); // added the helper function to this function
   }
   
   /* 
@@ -47,15 +47,34 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if (event.which === KEY.LEFT) {
+      speedX = -5;
       console.log("LEFT PRESSED");
     }else if (event.which === KEY.RIGHT) {
+      speedX = 5;
       console.log("RIGHT PRESSED");
     }else if (event.which === KEY.UP) {
+      speedY = -5;
             console.log("UP PRESSED");
     }else if (event.which === KEY.DOWN) {
+      speedY = 5;
             console.log("DOWN PRESSED");
     }
        
+  }
+  function handleKeyUp(event) {
+    if (event.which === KEY.LEFT) {
+      speedX = 0;
+      console.log("LEFT RELEASED");
+    }else if (event.which === KEY.RIGHT) {
+      speedX = 0;
+      console.log("RIGHT RELEASED");
+    }else if (event.which === KEY.UP) {
+      speedY = 0;
+            console.log("UP RELEASED");
+    }else if (event.which === KEY.DOWN) {
+      speedY = 0;
+            console.log("DOWN RELEASED");
+    }
   }
 
   ////////////////////////////////////////////////////////////////////////////////
