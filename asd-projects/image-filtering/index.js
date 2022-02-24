@@ -4,7 +4,7 @@ $(document).ready(function(){
     const $display = $('#display');
 
     // Multiple TODOs: Call your apply function(s) here
-applyFilter();
+    applyFilter(reddify);
 
 
 
@@ -17,15 +17,14 @@ applyFilter();
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2 & 4: Create the applyFilter function here
-function applyFilter() {
+function applyFilter(filterFunction) {
     for (var r = 0; r < image.length; r++) {
-        var row = image[r];
-    for (var c = 0; c < row.length; c++) {
-        var row = image[r][c];
-        var rgbString = image[0][1];
-        var rgbNumbers;
-        rgbStringToArray(rgbString);
-        rgbStringToArray();
+        for (var c = 0; c < image[r].length; c++) {
+        var rgbString = image[r][c];
+        var rgbNumbers =  rgbStringToArray(rgbString);
+        filterFunction(rgbNumbers);
+        rgbString = rgbArrayToString(rgbNumbers);
+        image[r][c] = rgbString;
      }
    }
 }
@@ -34,13 +33,15 @@ function applyFilter() {
 
 
 // TODO 5: Create the keepInBounds function
-function keepInBounds() {
+function keepInBounds(num) {
+    return Math.max(Math.min(0, 255), num);
     
 }
+    console.log(keepInBounds(300)); 
 
 // TODO 3: Create reddify function
 function reddify(arr) {
-   arr[0] = 200;
+   arr[RED] = 200;
 }
 
 // TODO 6: Create more filter functions
