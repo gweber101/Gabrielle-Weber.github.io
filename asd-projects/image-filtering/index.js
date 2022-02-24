@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     // Multiple TODOs: Call your apply function(s) here
 applyFilter();
-
+rgbStringToArray(rgbString);
 
 
 
@@ -18,17 +18,28 @@ applyFilter();
 
 // TODO 1, 2 & 4: Create the applyFilter function here
 function applyFilter() {
-
+    for (var r = 0; r < image.length; r++) {
+        var row = image[r];
+    for (var c = 0; c < row.length; c++) {
+        var row = image[r][c];
+        var rgbString = image[0][1];
+        var rgbNumbers;
+     }
+   }
 }
 
 // TODO 7: Create the applyFilterNoBackground function
 
 
 // TODO 5: Create the keepInBounds function
-
+function keepInBounds() {
+    
+}
 
 // TODO 3: Create reddify function
-
+function reddify(arr) {
+   arr[0] = 200;
+}
 
 // TODO 6: Create more filter functions
 
