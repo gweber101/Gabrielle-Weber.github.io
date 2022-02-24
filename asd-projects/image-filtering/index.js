@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     // Multiple TODOs: Call your apply function(s) here
 applyFilter();
-rgbStringToArray(rgbString);
+
 
 
 
@@ -24,6 +24,8 @@ function applyFilter() {
         var row = image[r][c];
         var rgbString = image[0][1];
         var rgbNumbers;
+        rgbStringToArray(rgbString);
+        rgbStringToArray();
      }
    }
 }
