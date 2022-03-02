@@ -5,7 +5,8 @@ $(document).ready(function(){
 
     // Multiple TODOs: Call your apply function(s) here
     applyFilter(reddify);
-
+    applyFilter(decreaseBlue);
+    applyFilter(increaseGreenByBlue);
 
 
 
@@ -34,10 +35,10 @@ function applyFilter(filterFunction) {
 
 // TODO 5: Create the keepInBounds function
 function keepInBounds(num) {
-    return Math.max(Math.min(0, 255), num);
+    return Math.max(Math.min(0, num), 255);
     
 }
-    console.log(keepInBounds(300)); 
+    console.log(keepInBounds(300, 100, 250)); 
 
 // TODO 3: Create reddify function
 function reddify(arr) {
@@ -45,6 +46,12 @@ function reddify(arr) {
 }
 
 // TODO 6: Create more filter functions
+function decreaseBlue(arr2) {
+arr2[BLUE] = keepInBounds(arr2[BLUE] - 50);
+}
+function increaseGreenByBlue(arr3) {
+arr3[GREEN] = keepInBounds(arr2[BLUE] + arr3[GREEN]);
+}
 
 
 // CHALLENGE code goes below here
