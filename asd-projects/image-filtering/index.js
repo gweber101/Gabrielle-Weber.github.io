@@ -33,8 +33,8 @@ function applyFilterNoBackground(filterFunction) {
     var backgroundColor = [RED];
     for (var r = 0; r < image.length; r++) {
         for (var c = 0; c < image[r].length; c++) {
-            if (backgroundColor === filterFunction(rgbNumbers)) { 
-                
+            if (backgroundColor === ) { 
+                filterFunction(rgbNumbers);
                 var rgbNumbers =  rgbStringToArray(rgbString);
                 var rgbString = image[r][c];
                 rgbString = rgbArrayToString(rgbNumbers);
