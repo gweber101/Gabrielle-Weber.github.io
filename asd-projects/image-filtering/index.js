@@ -4,9 +4,8 @@ $(document).ready(function(){
     const $display = $('#display');
 
     // Multiple TODOs: Call your apply function(s) here
-    applyFilter(reddify, applyFilterNoBackground, applyFilterNoBackground);
-
-
+    applyFilterNoBackground(decreaseBlue);
+    applyFilter(reddify);
 
     render($display, image);
 });
@@ -30,15 +29,17 @@ function applyFilter(filterFunction) {
 
 // TODO 7: Create the applyFilterNoBackground function
 function applyFilterNoBackground(filterFunction) {
-    var backgroundColor = [RED];
+    var backgroundColor = image[0][0];
     for (var r = 0; r < image.length; r++) {
         for (var c = 0; c < image[r].length; c++) {
-            if (backgroundColor === ) { 
+            if (backgroundColor != image[0][0]) { 
                 filterFunction(rgbNumbers);
                 var rgbNumbers =  rgbStringToArray(rgbString);
                 var rgbString = image[r][c];
                 rgbString = rgbArrayToString(rgbNumbers);
-                image[r][c] = rgbString;
+                //image[r][c] = rgbString;
+            }else {
+
             }
         }
     }
@@ -62,11 +63,11 @@ function reddify(arr) {
 
 // TODO 6: Create more filter functions
 function decreaseBlue(arr2) {
-arr2[BLUE] = keepInBounds(arr2[BLUE] - 50);
+   arr2[BLUE] = keepInBounds(arr2[BLUE] - 50);
 }
 
 function increaseGreenByBlue(arr3) {
-arr3[GREEN] = keepInBounds([BLUE] + arr3[GREEN]);
+   arr3[GREEN] = keepInBounds([BLUE] + arr3[GREEN]);
 }
 
 
