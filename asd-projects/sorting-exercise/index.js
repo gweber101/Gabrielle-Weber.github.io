@@ -13,7 +13,7 @@ The CSS ids you will work with are:
 /////////////////////// YOUR WORK GOES BELOW HERE /////////////////////
 ///////////////////////////////////////////////////////////////////////
 
-// TODO 2: Implement bubbleSort (check this function the start doesn't work)
+// TODO 2: Implement bubbleSort 
 async function bubbleSort(array) {
  for (var i = 0; i <= array.length - 1; i++) {
      for (var j = array.length - 1; j <= i + 1; j++) {
@@ -42,9 +42,17 @@ async function quickSort(array, left, right) {
 // TODOs 4 & 5: Implement partition
 async function partition(array, left, right) {
     var pivot = array[Math.floor((right + left)/2)].value;
-    while() {
-        while() {
-            
+    while(left < right) {
+         while(array[left] < pivot) {
+            left ++;
+            while(array[right] >= pivot)  {
+                right --;
+                if (left < right) {
+                    swap(array, left, right);
+                    updateCounter(quickCounter);
+                    await sleep();
+                }
+            }
         }
     }return left + 1;
 }
