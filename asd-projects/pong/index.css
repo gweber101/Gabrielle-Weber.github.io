@@ -7,9 +7,14 @@ body {
   width: 800px;
   height: 400px;
   border: 1px solid white;
-  background-color: black;
   position: relative;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/32/Dotted-line.png);
+  background-repeat: repeat-y;
+  background-color: white;
+  background-position: center;
 }
+
+
 
 #ball {
   background-color: teal;
@@ -20,7 +25,7 @@ body {
   }
 
   #player1{
-    color: white;
+    color: red;
     position: absolute;
     top: 12px;
     font-size: 40px;
@@ -28,37 +33,30 @@ body {
   }
 
   #player2{
-    color: white;
+    color: green;
     position: absolute;
     top: 12px;
     font-size: 40px;
     left: 700px;
   }
 
-  img {
-    position: absolute;
-    margin: auto;
-    height: 400px;
-    width: 200px;
-    left: 0;
-    right:0;
-  }
   
   #paddle1 {
     position:absolute;
-    background: white;
+    background: red;
     height: 80px;
     width: 20px;
   }
 
   #paddle2 {
     position:absolute;
-    background: white;
+    background: green;
     height: 80px;
     width: 20px;
     left: 780px;
   }
 
+  
 /*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
 /*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
 
