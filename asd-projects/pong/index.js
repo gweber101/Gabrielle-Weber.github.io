@@ -17,9 +17,10 @@ function runProgram(){
     "W": 87,
     "S": 83,
   };
+  var positionY = 0;
+  var speedY = 0;
   
-  // var W_pressed = false;
-  // var S_pressed = false;
+  startBall();
 
   // Game Item Objects
 
@@ -37,29 +38,48 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
-
+    repositionGameItem();
+    redrawGameItem(positionY);
   }
   
   /* 
   Called in response to events.
   */
-  function handleKeyUp(event) {
-  if (event.key ===   87) {
-    W_pressed = false;
-  }else if(event.key === 83) {
-    S_pressed = false;
-  }
-  }
-
-  function handleKeyDown(event) {
-    if (event.key === 87) {
-     W_pressed = true;
-    }else if(event.key === 83) {
-      S_pressed = true;
+    function handleKeyDown(event) {
+    if (event.which === KEY.UP) {
+      speedY = -5;
+    }else if(event.which === KEY.DOWN) {
+      speedY = 5;
+    }else if(event.which === KEY.W) {
+      speedY = -5;
+    }else if(event.which === KEY.S) {
+      speedY = 5;
     }
     }
 
+    function handleKeyUp(event) {
+      if (event.which === KEY.UP) {
+        speedY = 0;
+      }else if(event.which === KEY.DOWN) {
+        speedY = 0;
+      }else if(event.which === KEY.W) {
+        speedY = 0;
+      }else if(event.which === KEY.S) {
+        speedY = 0;
+      }
+      }
+    function GameObject(elementId) {  //factory function
+      var gameItem = {};
+      gameItem.id = elementId;
+      gameItem.x = $(elementId).css("left");
+      gameItem.y =$(elementId).css("top");
+      gameItem.width = $(elementId).width();
+      gameItem.height =$(elementId).height();
+      gameItem.speedX = 0;
+      gameItem.speedY = 0;
+      
+       return gameItem;
+    }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -74,15 +94,16 @@ function runProgram(){
   }
   
 }
-function GameObject(elementId) {
-  var gameItem = {};
-  gameItem.id = elementId;
-  gameItem.x = $(elementId).css("left");
-  gameItem.y =$(elementId).css("top");
-  gameItem.width = $(elementId).width();
-  gameItem.height =$(elementId).height();
-  gameItem.speedX = 0;
-  gameItem.speedY = 0;
-  
-   return gameItem;
+function repositionGameItem() {
+  positionY += speedY;
 }
+
+function redrawGameItem(positionY) {
+  $("#paddle1").css("top", positionY);
+  $("#paddle2").css("top", positionY);
+  // added in boardwidth and height
+}
+ function startBall() {
+
+ }
+
