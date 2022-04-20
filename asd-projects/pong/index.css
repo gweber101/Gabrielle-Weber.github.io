@@ -46,6 +46,7 @@ body {
     background: red;
     height: 80px;
     width: 20px;
+    top: 0px;
   }
 
   #paddle2 {
@@ -54,6 +55,7 @@ body {
     height: 80px;
     width: 20px;
     left: 780px;
+    top: 0px;
   }
 
   
