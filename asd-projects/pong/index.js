@@ -23,12 +23,12 @@ function runProgram(){
   startBall();
 
   // Game Item Objects
-  var paddle1 = gameItem(paddle1);
-  var paddle2 = gameItem(paddle2);
-  var ball = gameItem(ball);
+  var paddle1 = GameObject("#paddle1");
+  var paddle2 = GameObject("#paddle2");
+  var ball = GameObject("#ball");
 
   
-
+  paddle1.y + speedY 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on("keydown", handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -51,25 +51,25 @@ function runProgram(){
   */
     function handleKeyDown(event) {
     if (event.which === KEY.UP) {
-      paddle1.y + speedY  -5;
+      "#paddle1".y = -5;
     }else if(event.which === KEY.DOWN) {
-      speedY = 5;
+      "#paddle1".y = 5;
     }else if(event.which === KEY.W) {
-      speedY = -5;
+      "#paddle1".y = -5;
     }else if(event.which === KEY.S) {
-      speedY = 5;
+      "#paddle1".y = 5;
     }
     }
 
     function handleKeyUp(event) {
       if (event.which === KEY.UP) {
-        speedY = 0;
+        "#paddle1".y = 0;
       }else if(event.which === KEY.DOWN) {
-        speedY = 0;
+        "#paddle1".y = 0;
       }else if(event.which === KEY.W) {
-        speedY = 0;
+        "#paddle1".y = 0;
       }else if(event.which === KEY.S) {
-        speedY = 0;
+        "#paddle1".y = 0;
       }
       }
     function GameObject(elementId) {  //factory function
@@ -102,9 +102,9 @@ function repositionGameItem() {
   positionY += speedY;
 }
 
-function redrawGameItem(positionY) {
-  $("#paddle1").css("top", positionY);
-  $("#paddle2").css("top", positionY);
+function redrawGameItem() {
+  $("#paddle1").css("top", position);
+  $("#paddle2").css("top", position);
   // added in boardwidth and height
 }
  function startBall() {
