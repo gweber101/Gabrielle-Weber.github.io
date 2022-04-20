@@ -19,19 +19,15 @@ function runProgram(){
   };
   var positionY = 0;
   var speedY = 0;
-  var paddle1;
+  
   startBall();
 
   // Game Item Objects
-var paddle1 = {
-  id: #paddle1
-  width: 20,
-  height: 80,
-  speedY:0,
-  speedX: 0,
-  x: $(elementId).css("left"),
-  y:$(elementId).css("top"),
-}
+  var paddle1 = gameItem(paddle1);
+  var paddle2 = gameItem(paddle2);
+  var ball = gameItem(ball);
+
+  
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -55,7 +51,7 @@ var paddle1 = {
   */
     function handleKeyDown(event) {
     if (event.which === KEY.UP) {
-      speedY = -5;
+      paddle1.y + speedY  -5;
     }else if(event.which === KEY.DOWN) {
       speedY = 5;
     }else if(event.which === KEY.W) {
