@@ -14,13 +14,10 @@ function runProgram(){
   var KEY = {
     "UP": 38,
     "DOWN": 40,
-    "W": 87,
-    "S": 83,
+    "w": 87,
+    "s": 83,
   };
-  var positionY = 0;
-  var speedY = 0;
-  
-  startBall();
+
 
   // Game Item Objects
   var paddle1 = GameObject("#paddle1");
@@ -28,7 +25,7 @@ function runProgram(){
   var ball = GameObject("#ball");
 
   
-  paddle1.y + speedY 
+  
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on("keydown", handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -42,8 +39,7 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem();
-    redrawGameItem(positionY);
+    
   }
   
   /* 
@@ -51,25 +47,25 @@ function runProgram(){
   */
     function handleKeyDown(event) {
     if (event.which === KEY.UP) {
-      "#paddle1".y = -5;
+      paddle1.speedY = -5;
     }else if(event.which === KEY.DOWN) {
-      "#paddle1".y = 5;
-    }else if(event.which === KEY.W) {
-      "#paddle1".y = -5;
-    }else if(event.which === KEY.S) {
-      "#paddle1".y = 5;
+      paddle1.speedY = 5;
+    }else if(event.which === KEY.w) {
+      paddle1.speedY = -5;
+    }else if(event.which === KEY.s) {
+      paddle1.speedY = 5;
     }
     }
 
     function handleKeyUp(event) {
       if (event.which === KEY.UP) {
-        "#paddle1".y = 0;
+        paddle1.speedY = 0;
       }else if(event.which === KEY.DOWN) {
-        "#paddle1".y = 0;
-      }else if(event.which === KEY.W) {
-        "#paddle1".y = 0;
-      }else if(event.which === KEY.S) {
-        "#paddle1".y = 0;
+        paddle1.speedY = 0;
+      }else if(event.which === KEY.w) {
+        paddle1.speedY = 0;
+      }else if(event.which === KEY.s) {
+        paddle1.speedY = 0;
       }
       }
     function GameObject(elementId) {  //factory function
@@ -98,16 +94,7 @@ function runProgram(){
   }
   
 }
-function repositionGameItem() {
-  positionY += speedY;
+function moveObject(gameItem) {
+  
 }
-
-function redrawGameItem() {
-  $("#paddle1").css("top", position);
-  $("#paddle2").css("top", position);
-  // added in boardwidth and height
-}
- function startBall() {
-
- }
 
