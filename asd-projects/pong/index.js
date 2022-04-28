@@ -30,6 +30,7 @@ function runProgram(){
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on("keydown", handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on("keyup", handleKeyUp);
+  startBall();
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -94,6 +95,11 @@ function runProgram(){
   }
   
 }
+
+function startBall() {
+
+}
+
 function moveObject(gameItem) {
   
 }
