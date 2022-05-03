@@ -40,7 +40,8 @@ function runProgram() {
   by calling this function and executing the code inside.
   */
   function newFrame() {
-
+      moveObject(paddle1);
+      
   }
 
   /* 
@@ -49,6 +50,7 @@ function runProgram() {
   function handleKeyDown(event) {
     if (event.which === KEY.UP) {
       paddle1.speedY = -5;
+      console.log("");
     } else if(event.which === KEY.DOWN) {
       paddle1.speedY = 5;
     } else if(event.which === KEY.w) {
@@ -100,9 +102,9 @@ function startBall() {
 //var ball = 
 }
 
-function moveObject(elementId) {
-  elementId.y = 5;
-  elementId.x =
-  $("#paddle1").css("top", paddle1.y);
+function moveObject(gameItem) {
+  gameItem.speedY += gameItem.y;
+  $(gameItem.id).css("top", gameItem.speedY);
+
 }
 
