@@ -97,11 +97,12 @@ function runProgram() {
 }
 
 function startBall() {
-
+//var ball = 
 }
 
 function moveObject(elementId) {
   elementId.y = 5;
+  elementId.x =
   $("#paddle1").css("top", paddle1.y);
 }
 
