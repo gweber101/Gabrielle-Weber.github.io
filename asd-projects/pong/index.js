@@ -36,20 +36,20 @@ function runProgram() {
   function newFrame() {
       moveObject(paddle1);
       moveObject(paddle2);
-    
+      moveObject(ball);
   }
    /*
   Called in response to events.
   */
   function handleKeyDown(event) {
     if (event.which === KEY.UP) {
-      paddle1.speedY = -5;
+      paddle1.speedY = 0;
     } else if(event.which === KEY.DOWN) {
-      paddle1.speedY = 5;
+      paddle1.speedY = 32;
     } else if(event.which === KEY.w) {
-      paddle2.speedY = -5;
+      paddle2.speedY = 0;
     } else if(event.which === KEY.s) {
-      paddle2.speedY = 5;
+      paddle2.speedY = 32;
     }
   }
    function handleKeyUp(event) {
@@ -86,8 +86,12 @@ function runProgram() {
   }
   }
   function startBall() {
- //var ball =
+  ball.y = 10;
+  ball.x = 10;
+  ball.speedY = Math.random();
+  ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
  }
+
   function moveObject(gameItem) {
   gameItem.speedY += gameItem.y;
   $(gameItem.id).css("top", gameItem.speedY);
