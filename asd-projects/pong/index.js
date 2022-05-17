@@ -86,10 +86,10 @@ function runProgram() {
   }
   }
   function startBall() {
-  ball.y;
-  ball.x;
-  ball.speedY = Math.random();
-  ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+  ball.y = 10;
+  ball.x = 10;
+  ball.speedY = 5;
+  ball.speedX = 5;
  }
 
   function moveObject(gameItem) {
