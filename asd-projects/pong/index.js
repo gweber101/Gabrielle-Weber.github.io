@@ -6,22 +6,25 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-   // Constant Variables
+  // Constant Variables
   const FRAME_RATE = 60;
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-   var KEY = {
+  const BOARD_WIDTH = $("#board").width();
+  const BOARD_HEIGHT = $("#board").height();
+
+  var KEY = {
     "UP": 38,
     "DOWN": 40,
     "w": 87,
     "s": 83,
   };
-  
+
   // Game Item Objects
   var paddle1 = GameObject("#paddle1");
   var paddle2 = GameObject("#paddle2");
   var ball = GameObject("#ball");
-  
-   // one-time setup
+
+  // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on("keydown", handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on("keyup", handleKeyUp);
@@ -29,30 +32,32 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-   /*
-  On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
-  by calling this function and executing the code inside.
-  */
+  /*
+ On each "tick" of the timer, a new frame is dynamically drawn using JavaScript
+ by calling this function and executing the code inside.
+ */
   function newFrame() {
-      moveObject(paddle1);
-      moveObject(paddle2);
-      moveObject(ball);
+    moveObject(paddle1);
+    moveObject(paddle2);
+    //redrawGameItem(gameItem);
+    moveObject(ball);
   }
-   /*
-  Called in response to events.
-  */
+  /*
+ Called in response to events.
+ */
   function handleKeyDown(event) {
     if (event.which === KEY.UP) {
-      paddle1.speedY = 0;
-    } else if(event.which === KEY.DOWN) {
-      paddle1.speedY = 32;
-    } else if(event.which === KEY.w) {
-      paddle2.speedY = 0;
-    } else if(event.which === KEY.s) {
-      paddle2.speedY = 32;
+      paddle1.speedY = -5;
+    } else if (event.which === KEY.DOWN) {
+      paddle1.speedY = 5;
+      console.log(paddle1.y);
+    } else if (event.which === KEY.w) {
+      paddle2.speedY = -5;
+    } else if (event.which === KEY.s) {
+      paddle2.speedY = 5;
     }
   }
-   function handleKeyUp(event) {
+  function handleKeyUp(event) {
     if (event.which === KEY.UP) {
       paddle1.speedY = 0;
     } else if (event.which === KEY.DOWN) {
@@ -66,36 +71,41 @@ function runProgram() {
   function GameObject(elementId) {  //factory function
     var gameItem = {};
     gameItem.id = elementId;
-    gameItem.x = $(elementId).css("left");
-    gameItem.y = $(elementId).css("top");
+    gameItem.x = parseFloat($(elementId).css("left"));
+    gameItem.y = parseFloat($(elementId).css("top"));
     gameItem.width = $(elementId).width();
     gameItem.height = $(elementId).height();
     gameItem.speedX = 0;
     gameItem.speedY = 0;
-     return gameItem;
+    return gameItem;
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
-     // turn off event handlers
+    // turn off event handlers
     $(document).off();
   }
-  }
-  function startBall() {
+}
+function startBall() {
   ball.y = 10;
   ball.x = 10;
   ball.speedY = 5;
   ball.speedX = 5;
- }
+}
 
-  function moveObject(gameItem) {
-  gameItem.speedY += gameItem.y;
-  $(gameItem.id).css("top", gameItem.speedY);
-  }
+function moveObject(gameItem) {
+  gameItem.y += gameItem.speedY;
+  $(gameItem.id).css("top", gameItem.y);
+}
+
+function wallCollision(gameItem) {
+if (gameItem.x)
+}
+// function redrawGameItem(gameItem) {
   
- 
- 
+// }
+
