@@ -41,6 +41,7 @@ function runProgram() {
     moveObject(paddle2);
     //redrawGameItem(gameItem);
     moveObject(ball);
+    wallCollision();
   }
   /*
  Called in response to events.
@@ -103,7 +104,15 @@ function moveObject(gameItem) {
 }
 
 function wallCollision(gameItem) {
-if (gameItem.x)
+if (gameItem.x > BOARD_WIDTH) {
+  gameItem.x = BOARD_WIDTH;
+}else if(gameItem.x < 0) {
+  gameItem.x = 0;
+}if (gameItem.y > BOARD_HEIGHT) {
+  gameItem.y = BOARD_HEIGHT;
+}else if (gameItem.y < 0) {
+  gameItem.y = 0;
+}
 }
 // function redrawGameItem(gameItem) {
   
