@@ -92,19 +92,17 @@ function runProgram() {
     $(document).off();
   }
 }
-// function startBall() {
-//   ball.y = 10;
-//   ball.x = 10;
-//   ball.speedY = 5;
-//   ball.speedX = 5;
-  // ball.x += ball.speedX;
-  // ball.y += ball.speedY;
-  // $(ball).css("top", ball.y);
-  // $(ball).css("left", ball.x);
-//}
+
+ function startBall() {
+  ball.y = 10;
+  ball.x = 10;
+  ball.speedY = 5;
+  ball.speedX = 5;
+}
 
 function moveObject(gameItem) {
   gameItem.y += gameItem.speedY;
+  gameItem.x += gameItem.speedX;
   $(gameItem.id).css("top", gameItem.y);
   $(gameItem.id).css("left", gameItem.x);
 }

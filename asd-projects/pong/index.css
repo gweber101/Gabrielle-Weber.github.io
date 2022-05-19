@@ -52,7 +52,8 @@ body {
     background: green;
     height: 80px;
     width: 20px;
-    left: 780px;
+    right: 0px;
+    /* left: 780px; */
   }
  /*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
  /*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */ 
