@@ -40,7 +40,6 @@ function runProgram() {
     moveObject(paddle1);
     moveObject(paddle2);
     //redrawGameItem(gameItem);
-    moveObject(ball);
     //wallCollision();
     
   }
@@ -94,10 +93,10 @@ function runProgram() {
 }
 
  function startBall() {
-  ball.y = 10;
-  ball.x = 10;
+  ball.y = $("#ball").css("top", 170);
+  ball.x = $("#ball").css("left", 385);
   ball.speedY = 5;
-  ball.speedX = 5;
+  ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
 }
 
 function moveObject(gameItem) {
