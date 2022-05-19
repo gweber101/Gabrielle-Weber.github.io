@@ -41,7 +41,8 @@ function runProgram() {
     moveObject(paddle2);
     //redrawGameItem(gameItem);
     moveObject(ball);
-    wallCollision();
+    //wallCollision();
+    
   }
   /*
  Called in response to events.
@@ -91,29 +92,34 @@ function runProgram() {
     $(document).off();
   }
 }
-function startBall() {
-  ball.y = 10;
-  ball.x = 10;
-  ball.speedY = 5;
-  ball.speedX = 5;
-}
+// function startBall() {
+//   ball.y = 10;
+//   ball.x = 10;
+//   ball.speedY = 5;
+//   ball.speedX = 5;
+  // ball.x += ball.speedX;
+  // ball.y += ball.speedY;
+  // $(ball).css("top", ball.y);
+  // $(ball).css("left", ball.x);
+//}
 
 function moveObject(gameItem) {
   gameItem.y += gameItem.speedY;
   $(gameItem.id).css("top", gameItem.y);
+  $(gameItem.id).css("left", gameItem.x);
 }
 
-function wallCollision(gameItem) {
-if (gameItem.x > BOARD_WIDTH) {
-  gameItem.x = BOARD_WIDTH;
-}else if(gameItem.x < 0) {
-  gameItem.x = 0;
-}if (gameItem.y > BOARD_HEIGHT) {
-  gameItem.y = BOARD_HEIGHT;
-}else if (gameItem.y < 0) {
-  gameItem.y = 0;
-}
-}
+// function wallCollision(gameItem) {
+// if (gameItem.x > BOARD_WIDTH) {
+//   gameItem.x = BOARD_WIDTH;
+// }else if(gameItem.x < 0) {
+//   gameItem.x = 0;
+// }if (gameItem.y > BOARD_HEIGHT) {
+//   gameItem.y = BOARD_HEIGHT;
+// }else if (gameItem.y < 0) {
+//   gameItem.y = 0;
+// }
+// }
 // function redrawGameItem(gameItem) {
   
 // }
