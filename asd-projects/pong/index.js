@@ -41,6 +41,7 @@ function runProgram() {
     moveObject(paddle2);
     //redrawGameItem(gameItem);
     //wallCollision();
+    moveBall();
     
   }
   /*
@@ -99,11 +100,18 @@ function runProgram() {
   ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
 }
 
+function moveBall(ball) {
+  //gameItem.y += gameItem.speedY;
+  ball.x += ball.speedX;
+ // $(gameItem.id).css("top", gameItem.y);
+  $("#ball").css("left", ball.x);
+}
+
 function moveObject(gameItem) {
   gameItem.y += gameItem.speedY;
-  gameItem.x += gameItem.speedX;
+  //gameItem.x += gameItem.speedX;
   $(gameItem.id).css("top", gameItem.y);
-  $(gameItem.id).css("left", gameItem.x);
+ // $(gameItem.id).css("left", gameItem.x);
 }
 
 // function wallCollision(gameItem) {
