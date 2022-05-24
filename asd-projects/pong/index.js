@@ -39,10 +39,10 @@ function runProgram() {
   function newFrame() {
     moveObject(paddle1);
     moveObject(paddle2);
-    //redrawGameItem(gameItem);
-    //wallCollision();
-    moveBall(ball);
-    //moveObject(ball);
+    moveBall();
+    wallCollision(ball);
+    wallCollision(paddle1);
+    wallCollision(paddle2);
   }
   /*
  Called in response to events.
@@ -91,43 +91,35 @@ function runProgram() {
     // turn off event handlers
     $(document).off();
   }
+
+  function startBall() {
+    ball.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+  }
+
+  function moveBall() {
+    ball.y += ball.speedY;
+    $(ball.id).css("top", ball.y);
+    ball.x += ball.speedX;
+    $(ball.id).css("left", ball.x);
+  }
+
+  function moveObject(gameItem) {
+    gameItem.y += gameItem.speedY;
+    //gameItem.x += gameItem.speedX;
+    $(gameItem.id).css("top", gameItem.y);
+   // $(gameItem.id).css("left", gameItem.x);
+  }
+
+  function wallCollision(gameItem) {
+    if (gameItem.x > BOARD_WIDTH) {
+      gameItem.x = BOARD_WIDTH;
+    }else if(gameItem.x < 0) {
+      gameItem.x = 0;
+    }if (gameItem.y > BOARD_HEIGHT) {
+      gameItem.y = BOARD_HEIGHT;
+    }else if (gameItem.y < 0) {
+      gameItem.y = 0;
+    }
+    }
 }
-
- function startBall() {
-  ball.y = $("#ball").css("top", 170);
-  ball.x = $("#ball").css("left", 385);
-  ball.speedY = 5;
-  ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-  
-}
-
-function moveBall(ball) {
-  ball.y += ball.speedY;
-  $("#ball").css("top", ball.y);
-  ball.x += ball.speedX;
-  $("#ball").css("left", ball.x);
-  console.log(ball);
-}
-
-function moveObject(gameItem) {
-  gameItem.y += gameItem.speedY;
-  //gameItem.x += gameItem.speedX;
-  $(gameItem.id).css("top", gameItem.y);
- // $(gameItem.id).css("left", gameItem.x);
-}
-
-// function wallCollision(gameItem) {
-// if (gameItem.x > BOARD_WIDTH) {
-//   gameItem.x = BOARD_WIDTH;
-// }else if(gameItem.x < 0) {
-//   gameItem.x = 0;
-// }if (gameItem.y > BOARD_HEIGHT) {
-//   gameItem.y = BOARD_HEIGHT;
-// }else if (gameItem.y < 0) {
-//   gameItem.y = 0;
-// }
-// }
-// function redrawGameItem(gameItem) {
-  
-// }
-
