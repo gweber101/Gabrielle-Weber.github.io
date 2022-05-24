@@ -111,15 +111,28 @@ function runProgram() {
    // $(gameItem.id).css("left", gameItem.x);
   }
 
-  function wallCollision(gameItem) {
-    if (gameItem.x > BOARD_WIDTH) {
-      gameItem.x = BOARD_WIDTH;
-    }else if(gameItem.x < 0) {
-      gameItem.x = 0;
-    }if (gameItem.y > BOARD_HEIGHT) {
-      gameItem.y = BOARD_HEIGHT;
-    }else if (gameItem.y < 0) {
-      gameItem.y = 0;
-    }
+  // function wallCollision(gameItem) {
+  //   if (gameItem.x > BOARD_WIDTH) {
+  //     gameItem.x = BOARD_WIDTH;
+  //   }else if(gameItem.x < 0) {
+  //     gameItem.x = 0;
+  //   }if (gameItem.y > BOARD_HEIGHT) {
+  //     gameItem.y = BOARD_HEIGHT;
+  //   }else if (gameItem.y < 0) {
+  //     gameItem.y = 0;
+  //   }
+  //   }
+
+    function wallCollision(gameItem) {
+      gameItem.x += gameItem.speedX;
+      if(gameItem.x > BOARD_WIDTH) {
+        gameItem.speedX *= -1;
+      }if (gameItem.x < 0) {
+        gameItem.speedX += 3;
+      }if(gameItem.y > BOARD_HEIGHT) {
+        gameItem.speedY *= -1;
+      }if (gameItem.y < 0) {
+        gameItem.speedY += 3;
+      }
     }
 }
