@@ -41,8 +41,8 @@ function runProgram() {
     moveObject(paddle2);
     //redrawGameItem(gameItem);
     //wallCollision();
-    moveBall();
-    
+    moveBall(ball);
+    //moveObject(ball);
   }
   /*
  Called in response to events.
@@ -98,13 +98,15 @@ function runProgram() {
   ball.x = $("#ball").css("left", 385);
   ball.speedY = 5;
   ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+  
 }
 
 function moveBall(ball) {
-  //gameItem.y += gameItem.speedY;
+  ball.y += ball.speedY;
+  $("#ball").css("top", ball.y);
   ball.x += ball.speedX;
- // $(gameItem.id).css("top", gameItem.y);
   $("#ball").css("left", ball.x);
+  console.log(ball);
 }
 
 function moveObject(gameItem) {
