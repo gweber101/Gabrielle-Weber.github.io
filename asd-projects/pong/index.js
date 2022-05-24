@@ -37,12 +37,12 @@ function runProgram() {
  by calling this function and executing the code inside.
  */
   function newFrame() {
-    moveObject(paddle1);
-    moveObject(paddle2);
-    moveBall();
     wallCollision(ball);
     wallCollision(paddle1);
     wallCollision(paddle2);
+    moveObject(paddle1);
+    moveObject(paddle2);
+    moveBall();
   }
   /*
  Called in response to events.
@@ -102,6 +102,7 @@ function runProgram() {
     $(ball.id).css("top", ball.y);
     ball.x += ball.speedX;
     $(ball.id).css("left", ball.x);
+    console.log(ball.x);
   }
 
   function moveObject(gameItem) {
@@ -125,11 +126,11 @@ function runProgram() {
 
     function wallCollision(gameItem) {
       gameItem.x += gameItem.speedX;
-      if(gameItem.x > BOARD_WIDTH) {
+      if(gameItem.x > BOARD_WIDTH - gameItem.width) {
         gameItem.speedX *= -1;
       }if (gameItem.x < 0) {
         gameItem.speedX += 3;
-      }if(gameItem.y > BOARD_HEIGHT) {
+      }if(gameItem.y > BOARD_HEIGHT - gameItem.width) {
         gameItem.speedY *= -1;
       }if (gameItem.y < 0) {
         gameItem.speedY += 3;
