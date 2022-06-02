@@ -23,6 +23,9 @@ function runProgram() {
   var paddle1 = GameObject("#paddle1");
   var paddle2 = GameObject("#paddle2");
   var ball = GameObject("#ball");
+  var points = 0;
+  
+
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -122,7 +125,7 @@ function runProgram() {
       }
     }
     function score() {
-      
+      points += 1;
     }
 
 
