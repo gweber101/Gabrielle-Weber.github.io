@@ -23,8 +23,8 @@ function runProgram() {
   var paddle1 = GameObject("#paddle1");
   var paddle2 = GameObject("#paddle2");
   var ball = GameObject("#ball");
-  var points = 0;
-  
+  var score = 0;
+  //var updatedScore = ;
 
 
   // one-time setup
@@ -41,8 +41,8 @@ function runProgram() {
  */
   function newFrame() {
     wallCollision(ball);
-   // wallCollision(paddle1);
-    //wallCollision(paddle2);
+    wallCollision(player1);
+    wallCollision(player2);
     moveObject(paddle1);
     moveObject(paddle2);
     moveBall();
@@ -84,6 +84,7 @@ function runProgram() {
     gameItem.height = $(elementId).height();
     gameItem.speedX = 0;
     gameItem.speedY = 0;
+    gameItem.score = 0;
     return gameItem;
   }
   ////////////////////////////////////////////////////////////////////////////////
@@ -107,38 +108,35 @@ function runProgram() {
     $(ball.id).css("top", ball.y);
     ball.x += ball.speedX;
     $(ball.id).css("left", ball.x);
-    //console.log(ball.x);
   }
 
   function moveObject(gameItem) {
     gameItem.y += gameItem.speedY;
     //gameItem.x += gameItem.speedX;
     $(gameItem.id).css("top", gameItem.y);
-   // $(gameItem.id).css("left", gameItem.x);
+    // $(gameItem.id).css("left", gameItem.x);
   }
 
-    function movePaddle(gameItem) {
-      if(gameItem.y > BOARD_HEIGHT - gameItem.height) {
-        gameItem.y = BOARD_HEIGHT - gameItem.height;
-       }if(gameItem.y < 0) {
-        gameItem.y = 0;
-      }
+  function movePaddle(gameItem) {
+    if (gameItem.y > BOARD_HEIGHT - gameItem.height) {
+      gameItem.y = BOARD_HEIGHT - gameItem.height;
+    } if (gameItem.y < 0) {
+      gameItem.y = 0;
     }
-    function score() {
-      points += 1;
-    }
+  }
 
 
-    function wallCollision(gameItem) {
-      gameItem.x += gameItem.speedX;
-      if(gameItem.x > BOARD_WIDTH - gameItem.width) {
-        gameItem.speedX *= -1;
-      }if (gameItem.x < 0) {
-        gameItem.speedX += 3;
-      }if(gameItem.y > BOARD_HEIGHT - gameItem.height) {
-        gameItem.speedY *= -1;
-      }if (gameItem.y < 0) {
-        gameItem.speedY += 3;
-      }
+  function wallCollision(gameItem) {
+    if (gameItem.x > BOARD_WIDTH - gameItem.width) {
+      gameItem.speedX *= -1;
+      gameItem.score += 1;
+    } else if (gameItem.x < 0) {
+      gameItem.speedX += 3;
+      gameItem.score += 1;
+    } else if (gameItem.y > BOARD_HEIGHT - gameItem.height) {
+      gameItem.speedY *= -1;
+    } else if (gameItem.y < 0) {
+      gameItem.speedY += 3;
     }
+  }
 }
