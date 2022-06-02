@@ -38,11 +38,13 @@ function runProgram() {
  */
   function newFrame() {
     wallCollision(ball);
-    wallCollision(paddle1);
-    wallCollision(paddle2);
+   // wallCollision(paddle1);
+    //wallCollision(paddle2);
     moveObject(paddle1);
     moveObject(paddle2);
     moveBall();
+    movePaddle(paddle1);
+    movePaddle(paddle2);
   }
   /*
  Called in response to events.
@@ -102,7 +104,7 @@ function runProgram() {
     $(ball.id).css("top", ball.y);
     ball.x += ball.speedX;
     $(ball.id).css("left", ball.x);
-    console.log(ball.x);
+    //console.log(ball.x);
   }
 
   function moveObject(gameItem) {
@@ -112,17 +114,17 @@ function runProgram() {
    // $(gameItem.id).css("left", gameItem.x);
   }
 
-  // function wallCollision(gameItem) {
-  //   if (gameItem.x > BOARD_WIDTH) {
-  //     gameItem.x = BOARD_WIDTH;
-  //   }else if(gameItem.x < 0) {
-  //     gameItem.x = 0;
-  //   }if (gameItem.y > BOARD_HEIGHT) {
-  //     gameItem.y = BOARD_HEIGHT;
-  //   }else if (gameItem.y < 0) {
-  //     gameItem.y = 0;
-  //   }
-  //   }
+    function movePaddle(gameItem) {
+      if(gameItem.y > BOARD_HEIGHT - gameItem.height) {
+        gameItem.y = BOARD_HEIGHT - gameItem.height;
+       }if(gameItem.y < 0) {
+        gameItem.y = 0;
+      }
+    }
+    function score() {
+      
+    }
+
 
     function wallCollision(gameItem) {
       gameItem.x += gameItem.speedX;
@@ -130,7 +132,7 @@ function runProgram() {
         gameItem.speedX *= -1;
       }if (gameItem.x < 0) {
         gameItem.speedX += 3;
-      }if(gameItem.y > BOARD_HEIGHT - gameItem.width) {
+      }if(gameItem.y > BOARD_HEIGHT - gameItem.height) {
         gameItem.speedY *= -1;
       }if (gameItem.y < 0) {
         gameItem.speedY += 3;
