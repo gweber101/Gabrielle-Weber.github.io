@@ -23,7 +23,6 @@ function runProgram() {
   var paddle1 = GameObject("#paddle1");
   var paddle2 = GameObject("#paddle2");
   var ball = GameObject("#ball");
-  var score = 0;
   //var updatedScore = ;
 
 
@@ -48,6 +47,8 @@ function runProgram() {
     moveBall();
     movePaddle(paddle1);
     movePaddle(paddle2);
+    doCollide(paddle1);
+    doCollide(paddle2);
   }
   /*
  Called in response to events.
@@ -57,7 +58,6 @@ function runProgram() {
       paddle1.speedY = -5;
     } else if (event.which === KEY.DOWN) {
       paddle1.speedY = 5;
-      console.log(paddle1.y);
     } else if (event.which === KEY.w) {
       paddle2.speedY = -5;
     } else if (event.which === KEY.s) {
@@ -139,4 +139,10 @@ function runProgram() {
       gameItem.speedY += 3;
     }
   }
+}
+
+function doCollide(gameItem) {
+  if (gameItem.left < gameItem.right && gameItem.right > gameItem.left && gameItem.top < gameItem.bottom && gameItem.bottom > gameItem.top) {
+    return true;
+  }else false;
 }
