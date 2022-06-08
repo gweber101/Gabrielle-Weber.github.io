@@ -141,8 +141,12 @@ function runProgram() {
   }
 }
 
-function doCollide(gameItem) {
-  if (gameItem.left < gameItem.right && gameItem.right > gameItem.left && gameItem.top < gameItem.bottom && gameItem.bottom > gameItem.top) {
+function doCollide(paddle1, paddle2) {
+  if (paddle1.left < paddle2.right &&
+    paddle1.right > paddle2.left &&
+    paddle1.top < paddle2.bottom && 
+    paddle1.bottom > paddle2.top) {
     return true;
-  }else false;
+  } else false;
 }
+
