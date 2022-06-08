@@ -47,8 +47,6 @@ function runProgram() {
     moveBall();
     movePaddle(paddle1);
     movePaddle(paddle2);
-    doCollide(paddle1);
-    doCollide(paddle2);
   }
   /*
  Called in response to events.
@@ -141,12 +139,9 @@ function runProgram() {
   }
 }
 
-function doCollide(paddle1, paddle2) {
-  if (paddle1.left < paddle2.right &&
-    paddle1.right > paddle2.left &&
-    paddle1.top < paddle2.bottom && 
-    paddle1.bottom > paddle2.top) {
+function doCollide(obj1, obj2) {
+  if(obj1.x > obj2.width ) { 
     return true;
-  } else false;
+  }
 }
 
