@@ -23,7 +23,6 @@ function runProgram() {
   var paddle1 = GameObject("#paddle1");
   var paddle2 = GameObject("#paddle2");
   var ball = GameObject("#ball");
-  //var updatedScore = ;
 
 
   // one-time setup
@@ -39,16 +38,12 @@ function runProgram() {
  by calling this function and executing the code inside.
  */
   function newFrame() {
-    wallCollision(ball);
-    wallCollision(player1);
-    wallCollision(player2);
-    moveObject(paddle1);
-    moveObject(paddle2);
-    moveBall();
+    wallCollision();
     movePaddle(paddle1);
     movePaddle(paddle2);
-    doCollide(paddle1);
-    doCollide(paddle2);
+    moveBall();
+    paddleInside(paddle1);
+    paddleInside(paddle2);
   }
   /*
  Called in response to events.
@@ -99,25 +94,33 @@ function runProgram() {
   }
 
   function startBall() {
+    ball.x = BOARD_WIDTH / 2;
+    ball.y = BOARD_HEIGHT / 2;
+
     ball.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
     ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
   }
 
   function moveBall() {
+    if (doCollide(paddle1)) {
+      ball.speedX = -ball.speedX
+    } if (doCollide(paddle2)) {
+      ball.speedX = -ball.speedX
+    }
     ball.y += ball.speedY;
     $(ball.id).css("top", ball.y);
     ball.x += ball.speedX;
     $(ball.id).css("left", ball.x);
   }
 
-  function moveObject(gameItem) {
+  function movePaddle(gameItem) {
     gameItem.y += gameItem.speedY;
     //gameItem.x += gameItem.speedX;
     $(gameItem.id).css("top", gameItem.y);
     // $(gameItem.id).css("left", gameItem.x);
   }
 
-  function movePaddle(gameItem) {
+  function paddleInside(gameItem) {
     if (gameItem.y > BOARD_HEIGHT - gameItem.height) {
       gameItem.y = BOARD_HEIGHT - gameItem.height;
     } if (gameItem.y < 0) {
@@ -125,35 +128,33 @@ function runProgram() {
     }
   }
 
+  function wallCollision() {
+    if (ball.x > BOARD_WIDTH - ball.width) {
+      ball.speedX *= -1;
+      paddle1.score += 1;
+      $("#player1").text(paddle1.score);
+      startBall();
+    } else if (ball.x < 0) {
+      ball.speedX += 3;
+      paddle2.score += 1;
+      $("#player2").text(paddle2.score);
+      startBall();
+    } else if (ball.y > BOARD_HEIGHT - ball.height) {
+      ball.speedY *= -1;
+    } else if (ball.y < 0) {
+      ball.speedY += 3;
+    }if (paddle1.score === 11 || paddle2.score === 11) {
+      endGame(); 
+     }
+  }
 
-  function wallCollision(gameItem) {
-    if (gameItem.x > BOARD_WIDTH - gameItem.width) {
-      gameItem.speedX *= -1;
-      gameItem.score += 1;
-    } else if (gameItem.x < 0) {
-      gameItem.speedX += 3;
-      gameItem.score += 1;
-    } else if (gameItem.y > BOARD_HEIGHT - gameItem.height) {
-      gameItem.speedY *= -1;
-    } else if (gameItem.y < 0) {
-      gameItem.speedY += 3;
-    }
+  function doCollide(paddle) {
+    return (paddle.x < ball.x + ball.width &&
+      paddle.x + paddle.width > ball.x &&
+      paddle.y < ball.y + ball.height &&
+     paddle.height + paddle.y > ball.y
+    )
   }
 }
 
-// function doCollide(obj1, obj2) {
-//   if(obj1.x < obj2.x + obj2.width  && 
-//     obj1.x + obj1.width > obj2.x && 
-//     obj1.y < obj2.y + obj2.height && 
-//     obj1.y + obj2.height > obj2.y ) { 
-//     return true;
-//   }else return false;
-// }
 
-function doCollide(player1, ball) {
-  if(player1, ball) {
-      ball.speedX = -ball.speedX;
-  }if(player2, ball) {
-    ball.speedX = - ball.speedX;
-  }
-}
