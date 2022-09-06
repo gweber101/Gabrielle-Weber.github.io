@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkblue;
+  background-color: greenyellow;
  }
   
  #board {
@@ -12,6 +12,8 @@ body {
   background-repeat: repeat-y;
   background-color: white;
   background-position: center;
+  left: 500px;
+  top: 200px;
  }
   
  #ball {
